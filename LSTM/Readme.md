@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-This project builds and evaluates LSTM-based deep learning models to forecast hourly PM2.5 concentrations at a selected monitoring station in Beijing. The workflow covers the full forecasting pipeline: loading multisite air quality data, filtering to a single station, transforming the data into a supervised time series format, training baseline and stacked LSTM models, and comparing their performance using regression metrics and visual analysis.
+This project builds and evaluates LSTM-based deep learning models to forecast hourly PM2.5 concentrations at a selected monitoring station in Beijing. The workflow covers the full forecasting pipeline: loading multisite air quality data, filtering to a single station, transforming the data into a supervised time series format, training baseline and stacked LSTM models, and comparing their performance using regression metrics and visual analysis. The corresponding architecture diagrams for the LSTM models are included in this repository alongside the notebook/code.
 
 The main objective is to predict the next hour’s PM2.5 value based on the previous 24 hours of measurements, providing a proof-of-concept for short-term air quality forecasting using recurrent neural networks.[file:140]
 

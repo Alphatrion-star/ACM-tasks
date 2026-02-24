@@ -15,7 +15,7 @@ The main objective is to predict the next hour’s PM2.5 value based on the prev
 The notebook uses the **“Beijing Multisite Air Quality Data”** hosted on Kaggle, accessed via a CSV file stored in your Kaggle workspace:
 
 - Kaggle path used:  
-  `https://www.kaggle.com/datasets/victorbonilla/beijing-multisite-airquality-data-data-set
+  `https://www.kaggle.com/code/aravindpcoder/air-quality-monitoring?select=Beijing+Multisite+air+Quality+data.csv
 
 The original dataset includes multiple monitoring stations across Beijing, with hourly pollutant and meteorological measurements over several years.
 
@@ -160,56 +160,3 @@ To investigate whether a stacked LSTM with more parameters and temporal depth im
 - The models can already serve as a baseline for operational PM2.5 forecasting at a single station and can be extended or refined depending on application needs.
 
 ---
-
-## 5. Recommendations for Improvement
-
-To enhance the robustness and predictive accuracy of this work, consider the following extensions:
-
-### 5.1 Use Multivariate Inputs
-
-- Incorporate additional features such as:
-  - Other pollutants: PM10, SO2, NO2, CO, O3.
-  - Meteorological variables: temperature, pressure, dew point, wind speed, rainfall.
-  - Categorical encodings of wind direction (`wd`) and potentially time-of-day or day-of-week.[file:140]
-- Multivariate LSTM models can exploit correlations between PM2.5 and these covariates, especially during complex pollution episodes.
-
-### 5.2 Explore Different Window Sizes and Horizons
-
-- Experiment with longer input windows (e.g., 48 or 72 hours) to capture multi-day patterns and lagged effects.
-- Extend the forecasting horizon:
-  - From 1-step ahead (next hour) to multi-step ahead forecasts (e.g., next 6, 12, or 24 hours) using sequence-to-sequence architectures or rolling predictions.
-
-### 5.3 Model Architecture and Regularization
-
-- Test more advanced or alternative architectures:
-  - Bidirectional LSTMs for better context capture.
-  - GRUs as a lighter alternative to LSTMs.
-  - Temporal Convolutional Networks (TCNs) or 1D CNN–LSTM hybrids.
-- Apply stronger regularization where needed:
-  - Tuning dropout rates.
-  - L2 weight penalties.
-  - Careful tuning of hidden units and depth to balance capacity and overfitting risk.
-
-### 5.4 Hyperparameter Tuning
-
-- Systematically tune:
-  - Learning rate and optimizer (e.g., Adam vs. RMSprop).
-  - Number of LSTM units per layer.
-  - Batch size and number of epochs.
-  - Window size and sequence sampling strategy.
-- Use validation-based or automated search (Grid Search, Random Search, or Bayesian optimization) to find better configurations rather than relying on hand-picked defaults.
-
-### 5.5 Station Generalization and Cross-Validation
-
-- Extend the analysis from one station (Aotizhongxin) to multiple stations, exploring station-specific models versus a single model shared across stations.
-- Use time-series cross-validation (e.g., rolling-origin evaluation) for more robust generalization assessment instead of a single train/validation/test split.
-
-### 5.6 Error Analysis and Domain Constraints
-
-- Conduct detailed error analysis:
-  - Identify situations where the model underperforms (e.g., extreme pollution spikes, rapid weather changes).
-  - Investigate seasonality and meteorological regimes associated with high residuals.
-- Introduce simple domain constraints or post-processing rules if certain forecast behaviors are physically implausible (e.g., negative PM2.5, unrealistic jumps).
-
-By implementing these improvements, the project can evolve from a solid LSTM baseline into a more comprehensive and production-ready PM2.5 forecasting system that better captures the complexity of urban air pollution dynamics.
-
